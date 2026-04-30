@@ -9,9 +9,10 @@ Nemuri is a 2D RPG inspired by **OMORI**. It focuses on a rich narrative, turn-b
 - **Puzzles:** Environmental puzzles that often leverage the surreal nature of the world or character-specific abilities.
 
 ## Technical Standards
-- **Unity Version:** 6000.0.38f1 (based on ProjectVersion.txt)
+- **Unity Version:** 6000.4.0f1
 - **Render Pipeline:** Universal Render Pipeline (URP) - 2D
 - **Input System:** New Input System (`InputSystem_Actions.inputactions`)
+- **Follower System:** A 4-player party system where characters follow each other in a snake-like queue (OMORI style).
 - **Coding Style:** 
   - PascalCase for classes and public methods.
   - camelCase for private fields (with `_` prefix).

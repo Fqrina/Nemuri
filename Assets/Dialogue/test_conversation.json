@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {
+      "speaker": "Nemuri",
+      "text": "Welcome to the <color=purple>dream world</color>.",
+      "portraitName": "nemuri_neutral",
+      "typingSpeed": 0.05
+    },
+    {
+      "speaker": "Hero",
+      "text": "It feels... <b>different</b> than last time.",
+      "portraitName": "hero_thinking",
+      "typingSpeed": 0.05
+    },
+    {
+      "speaker": "Nemuri",
+      "text": "Everything is <color=red>changing</color>. You must be careful.",
+      "portraitName": "nemuri_serious",
+      "typingSpeed": 0.08
+    }
+  ]
+}

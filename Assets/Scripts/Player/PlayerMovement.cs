@@ -7,6 +7,8 @@ namespace Nemuri.Player
     [RequireComponent(typeof(Animator))]
     public class PlayerMovement : MonoBehaviour
     {
+        public static PlayerMovement Instance { get; private set; }
+
         [Header("Movement Settings")]
         [SerializeField] private float _moveSpeed = 5f;
         
@@ -16,25 +18,44 @@ namespace Nemuri.Player
         private Vector2 _lastMoveDirection = Vector2.down;
         private PlayerInput _playerInput;
         private InputAction _moveAction;
+        private bool _canMove = true;
 
         private void Awake()
         {
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+
             _rb = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _playerInput = GetComponent<PlayerInput>();
-            
-            if (_playerInput != null)
-            {
-                _moveAction = _playerInput.actions["Move"];
-            }
             
             _rb.gravityScale = 0f;
             _rb.freezeRotation = true;
         }
 
+        private void OnEnable()
+        {
+            if (_playerInput != null)
+            {
+                // Ensure the "Player" map is active and the asset is enabled
+                _playerInput.actions.Enable();
+                _playerInput.SwitchCurrentActionMap("Player");
+                _moveAction = _playerInput.currentActionMap.FindAction("Move");
+                
+                if (_moveAction != null)
+                {
+                    Debug.Log($"[PlayerMovement] Found 'Move' action in map '{_playerInput.currentActionMap.name}'.");
+                }
+            }
+        }
+
         private void Update()
         {
-            if (_moveAction != null)
+            if (!_canMove)
+            {
+                _moveInput = Vector2.zero;
+            }
+            else if (_moveAction != null)
             {
                 _moveInput = _moveAction.ReadValue<Vector2>();
             }
@@ -50,6 +71,12 @@ namespace Nemuri.Player
         private void Move()
         {
             _rb.MovePosition(_rb.position + _moveInput * _moveSpeed * Time.fixedDeltaTime);
+        }
+
+        public void SetCanMove(bool canMove)
+        {
+            _canMove = canMove;
+            if (!canMove) _moveInput = Vector2.zero;
         }
 
         private void UpdateAnimation()
