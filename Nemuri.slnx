@@ -49,6 +49,7 @@
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Unity.Cinemachine.csproj" />
   <Project Path="Unity.VisualScripting.Flow.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Splines.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.csproj" />
   <Project Path="Unity.AI.ModelSelector.csproj" />
@@ -64,7 +65,6 @@
   <Project Path="Unity.2D.IK.Editor.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.001.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.2D.Common.Path.Editor.csproj" />
   <Project Path="Unity.AI.Image.csproj" />
   <Project Path="Unity.2D.Common.Editor.csproj" />
